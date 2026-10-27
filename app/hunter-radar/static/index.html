@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>رادار Hunter lead</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="grid-bg"></div>
+<header class="glass">
+  <div class="logo"><span class="ring"></span><div><b>HUNTER</b> LEAD<small>رادار سرنخ AROMIN</small></div></div>
+  <div class="clock"><span id="date"></span><b id="time"></b></div>
+  <form id="cityForm" class="city"><input id="city" value="Rasht" aria-label="شهر"><button>نمایش نقشه</button></form>
+  <div id="status"></div>
+  <button id="scan" class="primary">شروع اسکن</button>
+</header>
+<main>
+  <section class="col side">
+    <div class="glass panel"><h2>منابع</h2><ol id="progress"></ol><p id="merge" class="muted"></p></div>
+    <div class="glass panel"><h2>مراحل پایپ‌لاین</h2><ol id="stepper"></ol></div>
+    <div class="glass panel"><h2>راهنما</h2>
+      <p><span class="sw" style="background:#2ad4ff"></span> پیدا شده</p>
+      <p><span class="sw" style="background:#910D6A"></span> شماره + گیلان + غیرهایپر + غیرتکراری در Joolio</p>
+      <p id="mapsrc" class="muted"></p></div>
+  </section>
+  <section class="col center glass">
+    <canvas id="radar"></canvas>
+    <div class="hud-title"><b id="cityName">—</b><small id="mapInfo"></small></div>
+    <div id="empty" hidden>هنوز داده‌ای نیست — «شروع اسکن» را بزنید.</div>
+  </section>
+  <section class="col side">
+    <div class="glass panel grow"><h2>کسب‌وکارها <span id="count"></span></h2><div id="list"></div></div>
+    <div class="glass panel bale"><h2>ماژول پیام‌رسان‌ها <span class="badge">DRY-RUN</span></h2>
+      <div id="channels" class="chips"></div>
+      <label class="tg"><input type="checkbox" id="baleOn"> فعال‌سازی ماژول (فقط پیش‌نویس)</label>
+      <label class="tg live"><input type="checkbox" id="baleLive"> ارسال واقعی (Live send) — قفل برای همه کانال‌ها</label>
+      <p class="muted" id="baleInfo"></p>
+      <div class="row"><button id="dry">اجرای آزمایشی</button><button id="stop" class="danger">⛔ توقف اضطراری</button></div>
+      <div id="queue"></div></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body></html>
