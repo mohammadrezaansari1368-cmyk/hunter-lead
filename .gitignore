@@ -13,3 +13,10 @@ gmaps
 *.exe
 *.log
 __pycache__/
+# hunter-radar
+app/hunter-radar/data/
+*.tsv
+*.json.bak
+*secret*
+*credential*
+*.key
