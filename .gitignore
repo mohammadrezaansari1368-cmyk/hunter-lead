@@ -20,3 +20,7 @@ app/hunter-radar/data/
 *secret*
 *credential*
 *.key
+outreach_*.csv
+outreach_*.txt
+bale_*.csv
+bale_*.txt

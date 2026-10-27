@@ -116,7 +116,7 @@ def run_pipeline(raw_rows, merged_rows, joolio_path=None):
         dict(id='gilan', label='فیلتر گیلان + حذف هایپر', count=len(s2), total=len(raw_rows) or len(merged_rows), note=''),
         dict(id='joolio', label='حذف تکراری با Joolio (فقط خواندنی)', count=len(s3) if joolio_ok else None,
              total=len(s2), note='' if joolio_ok else 'خروجی Joolio تنظیم نشده (JOOLIO_EXPORT_CSV)'),
-        dict(id='bale', label='صف پیام بله (فقط پیش‌نمایش)', count=len(queue), total=None, note='ارسال خودکار غیرفعال است'),
+        dict(id='bale', label='صف پیام (فقط پیش‌نمایش، همه کانال‌ها)', count=len(queue), total=None, note='ارسال خودکار غیرفعال است'),
     ], queue=queue, joolio_configured=joolio_ok)
 
 
@@ -131,3 +131,11 @@ def public_row(r, idx):
     return dict(key=str(idx), name=r.get('name') or '', category=r.get('category') or '', sources=srcs,
                 phone_masked=mask_phone(r.get('phone')), has_phone=bool(norm_phone(r.get('phone'))),
                 lat=r.get('lat') or None, lon=r.get('lon') or None, link=r.get('link') or '')
+
+
+def qualifies(r, joolio, joolio_ok):
+    """Purple dot: phone found AND Gilan AND not hyper/supermarket AND not in Joolio (read-only check done)."""
+    jphones, jnames = joolio
+    return bool(joolio_ok and norm_phone(r.get('phone')) and in_gilan(r.get('lat'), r.get('lon'))
+                and not is_excluded(r.get('name'), r.get('category'))
+                and norm_phone(r.get('phone')) not in jphones and norm_name(r.get('name')) not in jnames)
