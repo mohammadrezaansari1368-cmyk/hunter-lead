@@ -1,0 +1,15 @@
+*.csv
+*.xlsx
+*cookie*
+*.jar
+.env
+.env.*
+*.u100
+*.p100
+.u100
+.p100
+gmaps
+*.bin
+*.exe
+*.log
+__pycache__/
